@@ -1,0 +1,14 @@
+{
+    "Artic": {
+        "id": "1",
+        "username": "Artic",
+        "password": "developer",
+        "badge": "[DEVELOPER]"
+    },
+    "admin": {
+        "id": "1588",
+        "username": "admin",
+        "password": "admin",
+        "badge": "[ADMIN]"
+    }
+}
