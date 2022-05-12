@@ -62,12 +62,12 @@ def verify_badge(badge: str):
     return badge
 
 class command:
-    def id(message: str):
+    def id(message: str, _username: str):
         if str(message).split()[0] == '/id':
+            user = data_post.get_account_data()
             try:
                 name = message.split()[1]
                 try:
-                    user = data_post.get_account_data()
                     id = user[name]['id']
                     print('\033[35m[SYSTEM]\033[0m: The {}\'s id is {}.'.format(name, id))
                     return message
@@ -75,7 +75,10 @@ class command:
                     print('\033[35m[SYSTEM]\033[0m: This person doesn\'t exist.')
                     return message
             except:
-                print('\033[35m[SYSTEM]\033[0m: You did not mention anyone.')
+                username = user[_username]['username']
+                id = user[username]['id']
+
+                print('\033[35m[SYSTEM]\033[0m: The {}\'s id is {}.'.format(username, id))
                 return message
         else:
             return message
@@ -183,15 +186,15 @@ class command:
             return message
         else:
             return message
-    def info(message: str):
+    def info(message: str, _username: str):
         if str(message).split()[0] == '/info':
+            user = data_post.get_account_data()
             try:
                 name = message.split()[1]
                 try:
-                    user = data_post.get_account_data()
                     id = user[name]['id']
                     _badge = user[name]['badge']
-
+                    
                     badge = verify_badge(_badge)
 
                     print('\033[35m[SYSTEM]\033[0m: # userinfo - {} #\n'.format(name))
@@ -203,19 +206,48 @@ class command:
                     print('\033[35m[SYSTEM]\033[0m: This person doesn\'t exist.')
                     return message
             except:
-                print('\033[35m[SYSTEM]\033[0m: You did not mention anyone.')
+                username = user[_username]['username']
+
+                id = user[username]['id']
+                _badge = user[username]['badge']
+                    
+                badge = verify_badge(_badge)
+
+                print('\033[35m[SYSTEM]\033[0m: # userinfo - {} #\n'.format(username))
+                print('ID: {}'.format(id))
+                print('BADGE: {}'.format(badge))
+                print('')
                 return message
+        else:
+            return message
+    def appinfo(message: str):
+        if str(message).split()[0] == '/appinfo':
+            members = len(data_post.get_account_data())
+            print('\033[35m[SYSTEM]\033[0m: # appinfo #\n')
+            print('    Developed by Artic')
+            print(' Coded in Python (3.9.12)\n')
+            print('NUMBER OF MEMBERS: {}'.format(members))
+            print('')
+            return message
+        else:
+            return message
+    def exit(message: str):
+        if str(message).split()[0] == '/exit':
+            print('\033[35m[SYSTEM]\033[0m: Thank you for your visit !')
+            return sys.exit()
         else:
             return message
     def help(message: str):
         if str(message).split()[0] == '/help':
             print('\033[35m[SYSTEM]\033[0m: # help #\n\n    <> = required | [] = optional\n')
-            print('/id <username> - Gives you the user ID.')
+            print('/id [username] - Gives you the user ID.')
             print('/why - Why not ?')
             print('/tableflip - Oh and then?')
             print('/unflip - mmm...')
             print('/discord - The official discord server.')
-            print('/info <username> - Gives you the user info.')
+            print('/exit - Quit the client.')
+            print('/info [username] - Gives you the user info.')
+            print('/appinfo - Gives you the app info.')
             print('/badge <username> <new badge> - Modifies a user\'s badge.')
             print('/nick <username> <new name> - Modifies a user\'s name.')
             print('')
@@ -223,12 +255,12 @@ class command:
         else:
             return message
 
-def send(id):
+def send(id: str, username: str):
     message = input('You: ')
     if not message:
         return print('\033[35m[SYSTEM]\033[0m: You have sent a blank message.')
     elif message.split()[0] == '/id':
-        return command.id(message)
+        return command.id(message, username)
     elif message.split()[0] == '/badge':
         return command.badge(message, id)
     elif message.split()[0] == '/nick':
@@ -242,7 +274,11 @@ def send(id):
     elif message.split()[0] == '/discord':
         return command.discord(message)
     elif message.split()[0] == '/info':
-        return command.info(message)
+        return command.info(message, username)
+    elif message.split()[0] == '/appinfo':
+        return command.appinfo(message)
+    elif message.split()[0] == '/exit':
+        return command.exit(message)
     elif message.split()[0] == '/help':
         return command.help(message)
     else:
@@ -252,14 +288,16 @@ def send_limited():
     message = input('You: ')
     if not message:
         return print('\033[35m[SYSTEM]\033[0m: You have sent a blank message.')
+    elif message.split()[0] == '/exit':
+        return command.exit(message)
     elif message.startswith('/'):
-        print('\033[35m[SYSTEM]\033[0m: You can only use the commands by logging into an account !')
+        print('\033[35m[SYSTEM]\033[0m: You can only use the commands by logging into an account !\n\nYou can simply issue the command "/exit".\n')
         return message
     return message
 
 def main():
     os.system('cls')
-    print('WELCOME TO MESSAGES.PY !')
+    print('WELCOME TO INPUTER !')
     log_or_rapidlog = input('Do you have an account ? (y/n/create an account: c)\nYou: ')
     if log_or_rapidlog.lower() == 'n':
         user = log_with_no_account()
@@ -290,8 +328,9 @@ def main():
         badge = verify_badge(_badge)
 
         os.system('cls')
+        print('\033[35m[SYSTEM]\033[0m: Hey {} !\n\nUse "/help" to get all the commands.\n'.format(username))
         while True:
-            message = send(id)
+            message = send(id, username)
             print('{} {}: {}'.format(badge, username, message))
 
 if __name__ == '__main__':
