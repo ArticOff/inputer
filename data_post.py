@@ -24,6 +24,8 @@ DEALINGS IN THE SOFTWARE.
 
 import json, random
 
+SpecialSym =['$', '@', '#', '%']
+
 def get_account_data():
     with open('database.json', encoding='utf-8') as f:
         user = json.load(f)
@@ -43,7 +45,25 @@ class open_account:
         user = get_account_data()
 
         if str(self.username) in user:
-            return print('ERROR: this account already exists.')
+            return print('ERROR: This account already exists.')
+
+        if ' ' in str(self.username):
+            return print('ERROR: Spaces are not allowed (use "_").')
+        
+        if not any(char.isdigit() for char in str(self.password)):
+            return print('ERROR: Password should have at least one numeral.')
+        
+        if not any(char.isupper() for char in str(self.password)):
+            return print('ERROR: Password should have at least one uppercase letter.')
+        
+        if not any(char.islower() for char in str(self.password)):
+            return print('ERROR: Password should have at least one lowercase letter.')
+        
+        if not any(char.islower() for char in str(self.password)):
+            return print('ERROR: Password should have at least one lowercase letter.')
+
+        if not any(char in SpecialSym for char in str(self.password)):
+            return print('ERROR: Password should have at least one of the symbols ($, @, #, %).')
 
         else:
             
