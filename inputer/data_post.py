@@ -27,7 +27,7 @@ import json, random
 SpecialSym =['$', '@', '#', '%']
 
 def get_account_data():
-    with open('.json/database.json', encoding='utf-8') as f:
+    with open('database.json', encoding='utf-8') as f:
         user = json.load(f)
         f.close()
     return user
@@ -81,7 +81,7 @@ class open_account:
                 user[str(self.username)]['password'] = self.password
                 user[str(self.username)]['bot'] = self.bot
                 user[str(self.username)]['badge'] = self.badge
-                with open('.json/database.json','w', encoding='utf-8') as f:
+                with open('database.json','w', encoding='utf-8') as f:
                     json.dump(user,f,indent=4,separators=(',',': '), ensure_ascii=False)
                     f.close()
                 return print('ACCOUNT CREATED: your account {} has been created !\n\nLog in with your login details.'.format(self.username))
