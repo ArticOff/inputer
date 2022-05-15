@@ -289,7 +289,7 @@ def send(id: str, username: str):
     elif message.split()[0] == '/badge':
         return command.badge(message, id)
     elif message.split()[0] == '/name':
-        return command.nick(message, id)
+        return command.name(message, id)
     elif message.split()[0] == '/why':
         return command.why(message)
     elif message.split()[0] == '/tableflip':
