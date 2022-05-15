@@ -116,7 +116,7 @@ class command:
                         user[str(username)]['bot'] = bot
                         user[str(username)]['badge'] = status
 
-                        with open('.json/database.json','w', encoding='utf-8') as f:
+                        with open('database.json','w', encoding='utf-8') as f:
                             json.dump(user,f,indent=4,separators=(',',': '), ensure_ascii=False)
                             f.close()
                         
@@ -155,7 +155,7 @@ class command:
                         user[str(username)]['password'] = str(password)
                         user[str(username)]['bot'] = bot
                         user[str(username)]['badge'] = badge
-                        with open('.json/database.json','w', encoding='utf-8') as f:
+                        with open('database.json','w', encoding='utf-8') as f:
                             json.dump(user,f,indent=4,separators=(',',': '), ensure_ascii=False)
                             f.close()
                         
