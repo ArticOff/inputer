@@ -309,7 +309,8 @@ def send(id: str, username: str):
     elif message.split()[0] == '/help':
         return command.help(message)
     elif message.startswith('/'):
-        return print('\033[35m[SYSTEM]\033[0m: Unrecognised command.')
+        print('\033[35m[SYSTEM]\033[0m: Unrecognised command.')
+        return message
     else:
         return message
 
