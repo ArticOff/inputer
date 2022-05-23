@@ -1,0 +1,37 @@
+{
+    "ArticBot": {
+        "id": "3422",
+        "username": "ArticBot",
+        "password": "bot",
+        "bot": true,
+        "badge": "[BOT]"
+    },
+    "Artic": {
+        "id": "1",
+        "username": "Artic",
+        "password": "developer",
+        "bot": false,
+        "badge": "[DEVELOPER]"
+    },
+    "admin": {
+        "id": "434",
+        "username": "admin",
+        "password": "admin",
+        "bot": false,
+        "badge": "[ADMIN]"
+    },
+    "madboi01": {
+        "id": "7811",
+        "username": "madboi01",
+        "password": "ayo",
+        "bot": false,
+        "badge": "[MEMBER]"
+    },
+    "anonymous": {
+        "id": "6969",
+        "username": "anonymous",
+        "password": "g",
+        "bot": false,
+        "badge": "[VIP]"
+    }
+}
