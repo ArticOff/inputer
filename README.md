@@ -11,19 +11,16 @@ username: **Artic** - password: **developer**
 There are many accounts in the `database.json` file.
 
 ### Logging...
-![image](https://user-images.githubusercontent.com/81034458/169683494-ff7c844a-d96d-436a-b79b-fc3341bf7ac5.png)
+![image](https://user-images.githubusercontent.com/81034458/169893045-0567264c-85fb-4182-ac78-fc2fea066c9c.png)
 
 ### Chatting...
-![image](https://user-images.githubusercontent.com/81034458/169683480-aa68516b-7f8d-441d-9ec1-4c7285d94531.png)
+![image](https://user-images.githubusercontent.com/81034458/169893135-8468cb94-3de6-4dda-8660-a22c16d16343.png)
 
 ### And command execution !
-
-
-![image](https://user-images.githubusercontent.com/81034458/169683517-10e59b27-6bc5-4453-b48c-129e577b96f3.png)
+![image](https://user-images.githubusercontent.com/81034458/169893346-70d14b65-5be5-4abf-bf34-fda6b67a9384.png)
 
 ### We can also make bots!
-
-![image](https://user-images.githubusercontent.com/81034458/169683622-b8683867-38cf-4aca-acde-f22f4e181075.png)
+![image](https://user-images.githubusercontent.com/81034458/169893561-bb06bd9c-f9d7-4552-8396-c3b9dae50adb.png)
 
 ***
 
